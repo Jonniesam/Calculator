@@ -17,7 +17,17 @@ const seven_button = document.getElementById('7')
 const eight_button = document.getElementById('8')
 const nine_button = document.getElementById('9')
 const display = document.getElementById('display')
+const output = document.getElementById('output')
 console.log(display);
+
+clear_button.addEventListener('click', function () {
+    array1.length = 0;
+    array2.length = 0;
+    operators.length = 0;
+    display.innerText = 0;
+    output.innerText = '';
+})
+
 
 zero_button.addEventListener('click', function () {
     let val = zero_button.innerHTML;
@@ -102,7 +112,6 @@ divide_button.addEventListener('click', function () {
     })
 
 const operators = [];
-let operator = operators.values();
 const array1 = [];
 const array2 = [];
 
@@ -118,6 +127,7 @@ function storeVal(el) {
     let amount = el;
     let check = operators.length >= 1 ? true : false;
 if (el === '+' || el === '-' || el === 'x' || el === '/') {
+        operators.length = 0;
         operators.push(amount);
         return operators;
 }else if (check === false){
@@ -137,6 +147,20 @@ if (el === '+' || el === '-' || el === 'x' || el === '/') {
 equals_button.addEventListener('click', function () {
     let results = operate(getNum(array1), operators.toString(), getNum(array2));
     display.innerHTML = results;
+    output.innerHTML = results;
+    array1.length= 0;
+    array1.push(results);
+    array2.length = 0;
+});
+
+delete_button.addEventListener('click', function() {
+    if (operators.length = 0) {
+        array1.pop();
+        console.log(array1);
+    } else {
+        array2.pop();
+        console.log(array2);
+    }
 });
 
 
