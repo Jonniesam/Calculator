@@ -1,3 +1,7 @@
+const operators = [];
+const array1 = [];
+const array2 = [];
+
 const clear_button = document.getElementById('clear')
 const delete_button = document.getElementById('delete')
 const divide_button = document.getElementById('divide')
@@ -18,7 +22,6 @@ const eight_button = document.getElementById('8')
 const nine_button = document.getElementById('9')
 const display = document.getElementById('display')
 const output = document.getElementById('output')
-console.log(display);
 
 clear_button.addEventListener('click', function () {
     array1.length = 0;
@@ -31,61 +34,52 @@ clear_button.addEventListener('click', function () {
 
 zero_button.addEventListener('click', function () {
     let val = zero_button.innerHTML;
-    //console.log(val);
     storeVal(val);
     })
 nine_button.addEventListener('click', function () {
     let val = nine_button.innerHTML;
-    //console.log(val);
     storeVal(val);
     })
 eight_button.addEventListener('click', function () {
     let val = eight_button.innerHTML;
-    //console.log(val);
     storeVal(val);
     })
 
 seven_button.addEventListener('click', function () {
     let val = seven_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 six_button.addEventListener('click', function () {
     let val = six_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 five_button.addEventListener('click', function () {
     let val = five_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 four_button.addEventListener('click', function () {
     let val = four_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 three_button.addEventListener('click', function () {
     let val = three_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 two_button.addEventListener('click', function () {
     let val = two_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
 
 one_button.addEventListener('click', function () {
     let val = one_button.innerHTML;
-    //console.log(val);
     storeVal(val);
 })
+
 
 add_button.addEventListener('click', function () {
     let val = add_button.innerHTML;
@@ -93,7 +87,6 @@ add_button.addEventListener('click', function () {
     if (array1.length >=1 && array2.length >=1){
         let operation = getOp(operators);
         storeVal(val);
-        console.log(operation);
         let results = operate(getNum(array1), operation, getNum(array2));
     display.innerHTML = results;
     output.innerHTML = `${results} ${operators.at(-1)}`;
@@ -111,7 +104,6 @@ subtract_button.addEventListener('click', function () {
     if (array1.length >=1 && array2.length >=1){
         let operation = getOp(operators);
         storeVal(val);
-        console.log(operation);
         let results = operate(getNum(array1), operation, getNum(array2));
     display.innerHTML = results;
     output.innerHTML = `${results} ${operators.at(-1)}`;
@@ -129,7 +121,6 @@ mutliply_button.addEventListener('click', function () {
     if (array1.length >=1 && array2.length >=1){
         let operation = getOp(operators);
         storeVal(val);
-        console.log(operation);
         let results = operate(getNum(array1), operation, getNum(array2));
     display.innerHTML = results;
     output.innerHTML = `${results} ${operators.at(-1)}`;
@@ -147,7 +138,6 @@ divide_button.addEventListener('click', function () {
     if (array1.length >=1 && array2.length >=1){
         let operation = getOp(operators);
         storeVal(val);
-        console.log(operation);
         let results = operate(getNum(array1), operation, getNum(array2));
     display.innerHTML = results;
     output.innerHTML = `${results} ${operators.at(-1)}`;
@@ -159,9 +149,6 @@ divide_button.addEventListener('click', function () {
     }
     })
 
-const operators = [];
-const array1 = [];
-const array2 = [];
 
 
 function getNum(arr) {
@@ -201,21 +188,30 @@ equals_button.addEventListener('click', function () {
     let operation = getOp(operators);
     let results = operate(getNum(array1), operation.toString(), getNum(array2));
     display.innerHTML = results;
-    output.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
     array1.length= 0;
     array1.push(results);
     array2.length = 0;
 });
 
 delete_button.addEventListener('click', function() {
-    if (operators.length = 0) {
+    if (operators.length <= 0) {
         array1.pop();
-        console.log(array1);
+        display.innerText = array1;
     } else {
         array2.pop();
-        console.log(array2);
+        display.innerText = array2;
     }
 });
+
+function equate() {
+        let results = operate(getNum(array1), operation, getNum(array2));
+    display.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
+    array1.length= 0;
+    array2.length = 0;
+    array1.push(results);
+}
 
 
 function sum (a, b) {
