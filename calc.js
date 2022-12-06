@@ -90,25 +90,73 @@ one_button.addEventListener('click', function () {
 add_button.addEventListener('click', function () {
     let val = add_button.innerHTML;
     console.log(val);
-    storeVal(val);
+    if (array1.length >=1 && array2.length >=1){
+        let operation = getOp(operators);
+        storeVal(val);
+        console.log(operation);
+        let results = operate(getNum(array1), operation, getNum(array2));
+    display.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
+    array1.length= 0;
+    array2.length = 0;
+    array1.push(results);
+    } else {
+        storeVal(val);
+    }
     })
 
 subtract_button.addEventListener('click', function () {
     let val = subtract_button.innerHTML;
     console.log(val);
-    storeVal(val);
+    if (array1.length >=1 && array2.length >=1){
+        let operation = getOp(operators);
+        storeVal(val);
+        console.log(operation);
+        let results = operate(getNum(array1), operation, getNum(array2));
+    display.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
+    array1.length= 0;
+    array2.length = 0;
+    array1.push(results);
+    } else {
+        storeVal(val);
+    }
     })
 
 mutliply_button.addEventListener('click', function () {
     let val = mutliply_button.innerHTML;
     console.log(val);
-    storeVal(val);
+    if (array1.length >=1 && array2.length >=1){
+        let operation = getOp(operators);
+        storeVal(val);
+        console.log(operation);
+        let results = operate(getNum(array1), operation, getNum(array2));
+    display.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
+    array1.length= 0;
+    array2.length = 0;
+    array1.push(results);
+    } else {
+        storeVal(val);
+    }
     })
 
 divide_button.addEventListener('click', function () {
     let val = divide_button.innerHTML;
     console.log(val);
-    storeVal(val);
+    if (array1.length >=1 && array2.length >=1){
+        let operation = getOp(operators);
+        storeVal(val);
+        console.log(operation);
+        let results = operate(getNum(array1), operation, getNum(array2));
+    display.innerHTML = results;
+    output.innerHTML = `${results} ${operators.at(-1)}`;
+    array1.length= 0;
+    array2.length = 0;
+    array1.push(results);
+    } else {
+        storeVal(val);
+    }
     })
 
 const operators = [];
@@ -122,13 +170,18 @@ function getNum(arr) {
     return num;
     }
 
+    function getOp(op) {
+        let last = op.at(-1);
+        return last.toString();
+    }
+
 
 function storeVal(el) {
     let amount = el;
     let check = operators.length >= 1 ? true : false;
 if (el === '+' || el === '-' || el === 'x' || el === '/') {
-        operators.length = 0;
-        operators.push(amount);
+    operators.push(amount);
+    console.log(operators);
         return operators;
 }else if (check === false){
     array1.push(amount);
@@ -145,7 +198,8 @@ if (el === '+' || el === '-' || el === 'x' || el === '/') {
 }
 
 equals_button.addEventListener('click', function () {
-    let results = operate(getNum(array1), operators.toString(), getNum(array2));
+    let operation = getOp(operators);
+    let results = operate(getNum(array1), operation.toString(), getNum(array2));
     display.innerHTML = results;
     output.innerHTML = results;
     array1.length= 0;
